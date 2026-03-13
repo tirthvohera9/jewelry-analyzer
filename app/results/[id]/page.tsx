@@ -22,7 +22,7 @@ export default function ResultsPage() {
     const img = sessionStorage.getItem(`image_${id}`)
     if (!raw) { router.push('/'); return }
     const a: JewelryAnalysis = JSON.parse(raw)
-    setAnalysis(a); setCalc(synthesize(a)); setImageUrl(img)
+    setAnalysis(a); setCalc(synthesize(a)); setImageUrl(img ?? null)
   },[id,router])
 
   if (!analysis||!calc) return (

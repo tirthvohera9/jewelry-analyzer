@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  serverExternalPackages: ['dxf-writer'],
+  experimental: {
+    serverActions: { bodySizeLimit: '11mb' },
+  },
+}
 
-export default nextConfig;
+export default nextConfig

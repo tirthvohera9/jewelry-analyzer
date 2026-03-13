@@ -11,7 +11,7 @@ export function generatePDF(analysis: JewelryAnalysis, calc: CalculationOutput, 
   doc.setTextColor(200,200,200); doc.setFontSize(9); doc.setFont('helvetica','normal')
   doc.text(`Report ID: ${analysis.id} | ${new Date().toLocaleDateString()}`,14,25)
   let y=40
-  if (imageBase64) { try { doc.addImage(imageBase64,'JPEG',14,y,60,60) } catch(_){} }
+  if (imageBase64) { try { const imgData = imageBase64.replace(/^data:image\/[a-z]+;base64,/, ''); doc.addImage(imgData,'JPEG',14,y,60,60) } catch(_){} }
   const sx = imageBase64 ? 82 : 14
   doc.setFillColor(26,21,16); doc.roundedRect(sx,y,115,60,3,3,'F')
   doc.setTextColor(212,175,55); doc.setFontSize(11); doc.setFont('helvetica','bold'); doc.text('Analysis Summary',sx+4,y+10)

@@ -1,5 +1,5 @@
 import type { JewelryAnalysis } from '@/types/analysis'
-import type { CalculationOutput } from '@/types/calculation'
+import type { CalculationOutput, MaterialResult } from '@/types/calculation'
 import { calcRingWeight, calcBraceletWeight, calcNecklaceWeight } from './metalWeight'
 import { sizeToCarats, calcSettingMetal } from './gemstoneWeight'
 import { getDensity } from './metalDensity'
@@ -25,7 +25,7 @@ export function synthesize(analysis: JewelryAnalysis): CalculationOutput {
     metalResult.minG *= scale; metalResult.maxG *= scale
   }
 
-  const materials = [{
+  const materials: MaterialResult[] = [{
     label: formatMetal(metal.type, metal.purity),
     valueG: metalResult.weightG, minValue: metalResult.minG, maxValue: metalResult.maxG,
     unit: 'g' as const, confidence: metal.confidence,

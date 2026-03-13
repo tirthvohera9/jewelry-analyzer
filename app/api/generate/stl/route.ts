@@ -40,5 +40,5 @@ export async function POST(req: NextRequest) {
     ? ringTriangles(dimensions.widthMm/2/10||0.85, (dimensions.widthMm/2+(dimensions.wallThicknessMm||1.5))/10, (dimensions.heightMm||3)/10)
     : boxTriangles((dimensions.lengthMm||20)/10,(dimensions.widthMm||5)/10,(dimensions.heightMm||3)/10)
   const stl = writeBinarySTL(tris)
-  return new Response(stl, { headers:{ 'Content-Type':'application/octet-stream', 'Content-Disposition':`attachment; filename="jewelry-${analysis.id}.stl"` } })
+  return new Response(stl.buffer as ArrayBuffer, { headers:{ 'Content-Type':'application/octet-stream', 'Content-Disposition':`attachment; filename="jewelry-${analysis.id}.stl"` } })
 }
