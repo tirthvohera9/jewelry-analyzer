@@ -12,7 +12,7 @@ const genai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
 // Flash: fast, accurate for classification and analysis
 const FLASH = 'gemini-2.0-flash'
 // Pro: deeper reasoning for gemstones, dimensions cross-validation, synthesis
-const PRO = 'gemini-1.5-pro'
+const PRO = 'gemini-2.0-flash'
 
 function safeJSON(text: string): Record<string, unknown> {
   try {
